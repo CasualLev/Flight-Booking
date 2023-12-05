@@ -1,0 +1,34 @@
+﻿@page
+@model FlightBookingFinal.Pages.Airports.IndexModel
+@{
+}
+<h2>Airports</h2>
+<a class='btn btn-primary btn-sm' href='/Airports/Create'>Add destination</a>
+@if (Model.listAirports != null && Model.listAirports.Any())
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Name</th>
+                <th>City</th>
+                <th>Country</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var airport in Model.listAirports)
+            {
+                <tr>
+                    <td>@airport.airportCode</td>
+                    <td>@airport.airportName</td>
+                    <td>@airport.airportCity</td>
+                    <td>@airport.airportCountry</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No airports available.</p>
+}

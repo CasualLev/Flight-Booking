@@ -1,0 +1,33 @@
+﻿@page
+@model FlightBookingFinal.Pages.Airlines.IndexModel
+@{
+}
+<h2>Airlines</h2>
+<a class='btn btn-primary btn-sm' href='/Airlines/Create'>Add airline</a>
+@if (Model.listAirlines != null && Model.listAirlines.Any())
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>IATA Code</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var airport in Model.listAirlines)
+            {
+                <tr>
+                    <td>@airport.airlineName</td>
+                    <td>@airport.airlineCode</td>
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No airports available.</p>
+}

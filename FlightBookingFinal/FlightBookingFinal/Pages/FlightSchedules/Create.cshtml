@@ -1,0 +1,88 @@
+﻿@page
+@model FlightBookingFinal.Pages.FlightSchedules.CreateModel
+@{
+}
+<h2>Flight Schedules</h2>
+<a class='btn btn-primary btn-sm' href='/fSchedule/lndex'>View Scheduled Flights</a>
+<form method="post">
+    <div class="form-group">
+        <label asp-for="fSchedule.RouteNumber"></label>
+        <input asp-for="fSchedule.RouteNumber" class="form-control" name="RouteNumber" />
+        <span asp-validation-for="fSchedule.RouteNumber" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="fSchedule.FlightName"></label>
+        <select asp-for="fSchedule.FlightName" class="form-control" name="FlightName">
+            <option value="">Select Flight Name</option>
+            @foreach (var airline in Model.Airlines)
+            {
+                <option value="@airline">@airline</option>
+            }
+        </select>
+        <span asp-validation-for="fSchedule.FlightName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="fSchedule.DepartureAirport"></label>
+        <select asp-for="fSchedule.DepartureAirport" class="form-control" name="DepartureAirport">
+            <option value="">Select Departure Airport</option>
+            @foreach (var airport in Model.Airports)
+            {
+                <option value="@airport">@airport</option>
+            }
+        </select>
+        <span asp-validation-for="fSchedule.DepartureAirport" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="fSchedule.DestinationAirport"></label>
+        <select asp-for="fSchedule.DestinationAirport" class="form-control" name="DestinationAirport">
+            <option value="">Select Destination Airport</option>
+            @foreach (var airport in Model.Airports)
+            {
+                <option value="@airport">@airport</option>
+            }
+        </select>
+        <span asp-validation-for="fSchedule.DestinationAirport" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="fSchedule.EconomySeats"></label>
+        <input asp-for="fSchedule.EconomySeats" type="number" class="form-control" name="EconomySeats" />
+        <span asp-validation-for="fSchedule.EconomySeats" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="fSchedule.EconomyPrice"></label>
+        <input asp-for="fSchedule.EconomyPrice" type="number" class="form-control" step="0.01" name="EconomyPrice" />
+        <span asp-validation-for="fSchedule.EconomyPrice" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="fSchedule.BusinessSeats"></label>
+        <input asp-for="fSchedule.BusinessSeats" type="number" class="form-control" name="BusinessSeats" />
+        <span asp-validation-for="fSchedule.BusinessSeats" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="fSchedule.BusinessPrice"></label>
+        <input asp-for="fSchedule.BusinessPrice" type="number" class="form-control" step="0.01" name="BusinessPrice" />
+        <span asp-validation-for="fSchedule.BusinessPrice" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="fSchedule.DepartureTime"></label>
+        <input asp-for="fSchedule.DepartureTime" type="datetime-local" class="form-control" name="DepartureTime" />
+        <span asp-validation-for="fSchedule.DepartureTime" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="fSchedule.ArrivalTime"></label>
+        <input asp-for="fSchedule.ArrivalTime" type="datetime-local" class="form-control" name="ArrivalTime" />
+        <span asp-validation-for="fSchedule.ArrivalTime" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Flight Schedule</button>
+</form>
+
