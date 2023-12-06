@@ -3,7 +3,7 @@
 @{
 }
 <h2>Flight Schedules</h2>
-<a class='btn btn-primary btn-sm' href='/fSchedule/lndex'>View Scheduled Flights</a>
+<a class='btn btn-primary btn-sm' href='/FlightSchedules/lndex'>View Scheduled Flights</a>
 <form method="post">
     <div class="form-group">
         <label asp-for="fSchedule.RouteNumber"></label>
@@ -15,7 +15,7 @@
         <label asp-for="fSchedule.FlightName"></label>
         <select asp-for="fSchedule.FlightName" class="form-control" name="FlightName">
             <option value="">Select Flight Name</option>
-            @foreach (var airline in Model.Airlines)
+            @foreach (var airline in Model.listairlines)
             {
                 <option value="@airline">@airline</option>
             }
@@ -27,7 +27,7 @@
         <label asp-for="fSchedule.DepartureAirport"></label>
         <select asp-for="fSchedule.DepartureAirport" class="form-control" name="DepartureAirport">
             <option value="">Select Departure Airport</option>
-            @foreach (var airport in Model.Airports)
+            @foreach (var airport in Model.listairports)
             {
                 <option value="@airport">@airport</option>
             }
@@ -39,7 +39,7 @@
         <label asp-for="fSchedule.DestinationAirport"></label>
         <select asp-for="fSchedule.DestinationAirport" class="form-control" name="DestinationAirport">
             <option value="">Select Destination Airport</option>
-            @foreach (var airport in Model.Airports)
+            @foreach (var airport in Model.listairports)
             {
                 <option value="@airport">@airport</option>
             }

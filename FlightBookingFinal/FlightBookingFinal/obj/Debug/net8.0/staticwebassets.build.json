@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "C1KtGib66A3YtkRX1+9qaVgojSAZpDFqGUIZgi7iQm4=",
+  "Hash": "O+hO1+NrNATheJtpHGg0aia96cV+0SX5XV6EADObWVM=",
   "Source": "FlightBookingFinal",
   "BasePath": "_content/FlightBookingFinal",
   "Mode": "Default",
@@ -74,6 +74,25 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
+      "Identity": "C:\\Users\\levyi\\OneDrive\\Desktop\\Dotnet class\\Final Project\\FlightBookingFinal\\FlightBookingFinal\\wwwroot\\css\\Styles.css",
+      "SourceId": "FlightBookingFinal",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\levyi\\OneDrive\\Desktop\\Dotnet class\\Final Project\\FlightBookingFinal\\FlightBookingFinal\\wwwroot\\",
+      "BasePath": "_content/FlightBookingFinal",
+      "RelativePath": "css/Styles.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Styles.css"
+    },
+    {
       "Identity": "C:\\Users\\levyi\\OneDrive\\Desktop\\Dotnet class\\Final Project\\FlightBookingFinal\\FlightBookingFinal\\wwwroot\\favicon.ico",
       "SourceId": "FlightBookingFinal",
       "SourceType": "Discovered",
@@ -91,6 +110,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\levyi\\OneDrive\\Desktop\\Dotnet class\\Final Project\\FlightBookingFinal\\FlightBookingFinal\\wwwroot\\Images\\header.jpg",
+      "SourceId": "FlightBookingFinal",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\levyi\\OneDrive\\Desktop\\Dotnet class\\Final Project\\FlightBookingFinal\\FlightBookingFinal\\wwwroot\\",
+      "BasePath": "_content/FlightBookingFinal",
+      "RelativePath": "Images/header.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\header.jpg"
     },
     {
       "Identity": "C:\\Users\\levyi\\OneDrive\\Desktop\\Dotnet class\\Final Project\\FlightBookingFinal\\FlightBookingFinal\\wwwroot\\js\\site.js",

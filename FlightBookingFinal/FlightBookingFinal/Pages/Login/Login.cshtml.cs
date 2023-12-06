@@ -6,21 +6,20 @@ namespace FlightBookingFinal.Pages.Login
 {
     public class LoginModel : PageModel
     {
-        public String errorMessage = "";
+        public string ErrorMessage { get; set; } = "";
+
         public void OnGet()
         {
         }
-
 
         public IActionResult OnPost()
         {
             string username = Request.Form["username"];
             string password = Request.Form["password"];
-            string role = Request.Form["role"];
 
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(role))
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
-                errorMessage = "All fields must be filled";
+                ErrorMessage = "All fields must be filled";
                 return Page();
             }
 
@@ -30,16 +29,15 @@ namespace FlightBookingFinal.Pages.Login
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
                     con.Open();
-                    string sqlQuery = "SELECT COUNT(*) FROM Users WHERE Username = @username AND Password = @password AND Role = @role";
+                    string sqlQuery = "SELECT Role FROM Users WHERE Username = @username AND Password = @password";
                     using (SqlCommand cmd = new SqlCommand(sqlQuery, con))
                     {
                         cmd.Parameters.AddWithValue("@username", username);
                         cmd.Parameters.AddWithValue("@password", password);
-                        cmd.Parameters.AddWithValue("@role", role);
 
-                        int userCount = (int)cmd.ExecuteScalar();
+                        string role = (string)cmd.ExecuteScalar();
 
-                        if (userCount > 0)
+                        if (role != null)
                         {
                             // Successful login
                             // Redirect to the appropriate page based on the role
@@ -49,12 +47,12 @@ namespace FlightBookingFinal.Pages.Login
                             }
                             else if (role == "Customer")
                             {
-                                return RedirectToPage("/CustomerDashboard");
+                                return RedirectToPage("/CustomerBooking/Search");
                             }
                         }
                         else
                         {
-                            errorMessage = "Invalid username, password, or role. Please try again.";
+                            ErrorMessage = "Invalid username or password. Please try again.";
                             return Page();
                         }
                     }
@@ -62,7 +60,7 @@ namespace FlightBookingFinal.Pages.Login
             }
             catch (Exception ex)
             {
-                errorMessage = "An error occurred while processing your request. Please try again.";
+                ErrorMessage = "An error occurred while processing your request. Please try again.";
                 // Log the detailed error for your reference
                 Console.WriteLine(ex.ToString());
                 return Page();

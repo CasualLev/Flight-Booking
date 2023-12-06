@@ -36,7 +36,7 @@ namespace FlightBookingFinal.Pages.BookingUsers
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
                     con.Open();
-                    String sqlQuery = "INSERT INTO uSERS (username,password,email,role) VALUES(@username,@password,@email,@role)";
+                    String sqlQuery = "INSERT INTO Users (Username,Password,Email,Role) VALUES(@username,@password,@email,@role)";
                     using (SqlCommand cmd = new SqlCommand(sqlQuery, con))
                     {
                         string hashedPassword = HashPassword(BUserInfo.pasword);

@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets\\FlightBookingFinal.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\levyi\\OneDrive\\Desktop\\Dotnet class\\Final Project\\FlightBookingFinal\\FlightBookingFinal\\wwwroot\\Images\\header.jpg",
+      "PackagePath": "staticwebassets\\Images\\header.jpg"
+    },
+    {
+      "Id": "C:\\Users\\levyi\\OneDrive\\Desktop\\Dotnet class\\Final Project\\FlightBookingFinal\\FlightBookingFinal\\wwwroot\\css\\Styles.css",
+      "PackagePath": "staticwebassets\\css\\Styles.css"
+    },
+    {
       "Id": "C:\\Users\\levyi\\OneDrive\\Desktop\\Dotnet class\\Final Project\\FlightBookingFinal\\FlightBookingFinal\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

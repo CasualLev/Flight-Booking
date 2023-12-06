@@ -7,49 +7,85 @@ namespace FlightBookingFinal.Pages.FlightSchedules
 {
     public class CreateModel : PageModel
     {
-        public FlightSchedule fSchedule = new FlightSchedule();
-        public String errorMessage = "";
-        public String successMessage = "";
-        public List<airlineInfo> listairlines = new List<airlineInfo>();
-        public List<airportInfo> listairports = new List<airportInfo>();
+         public FlightSchedule fSchedule = new FlightSchedule();
+        public List<FlightSchedule> fSchedules = new List<FlightSchedule>();
+        public List<string> listairlines = new List<string>();
+        public List<string> listairports = new List<string>();
 
         public void OnGet()
         {
+            LoadAirlines();
+            LoadAirports();
         }
 
-        public void OnPost()
+        public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
             {
-                LoadFlightSchedules();
                 LoadAirlines();
                 LoadAirports();
-                
+                return Page();
             }
+
             try
             {
-
                 fSchedule.RouteNumber = Request.Form["RouteNumber"];
                 fSchedule.FlightName = Request.Form["FlightName"];
                 fSchedule.DepartureAirport = Request.Form["DepartureAirport"];
                 fSchedule.DestinationAirport = Request.Form["DestinationAirport"];
                 fSchedule.EconomySeats = int.Parse(Request.Form["EconomySeats"]);
-                fSchedule.EconomyPrice = int.Parse(Request.Form["EconomyPrice"]);
+                fSchedule.EconomyPrice = decimal.Parse(Request.Form["EconomyPrice"]);
                 fSchedule.BusinessSeats = int.Parse(Request.Form["BusinessSeats"]);
-                fSchedule.BusinessPrice = int.Parse(Request.Form["BusinessPrice"]);
+                fSchedule.BusinessPrice = decimal.Parse(Request.Form["BusinessPrice"]);
                 fSchedule.DepartureTime = DateTime.Parse(Request.Form["DepartureTime"]);
                 fSchedule.ArrivalTime = DateTime.Parse(Request.Form["ArrivalTime"]);
 
+                // Save the flight schedule to the database
+                SaveFlightSchedule(fSchedule);
+
+                // Reload the list of flight schedules after successful creation
+                LoadFlightSchedules();
+
+                return RedirectToPage("/FlightSchedules/Index");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"SQL Exception:  {ex.Message}");
+                Console.WriteLine($"Exception: {ex.Message}");
+                return Page();
+            }
+        }
+
+        private void SaveFlightSchedule(FlightSchedule flightSchedule)
+        {
+            string connectionString = "Data Source=DESKTOP-ST9MH65;Initial Catalog=FBookingDBV2;Integrated Security=True;Encrypt=False";
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                string sqlQuery = "INSERT INTO FlightSchedules (FlightRouteNumber, FlightName, DepartureAirportName, DestinationAirportName, EconomyClassSeats, EconomyClassPrice, BusinessClassSeats, BusinessClassPrice, DepartureTime, ArrivalTime) " +
+                                  "VALUES (@RouteNumber, @FlightName, @DepartureAirport, @DestinationAirport, @EconomySeats, @EconomyPrice, @BusinessSeats, @BusinessPrice, @DepartureTime, @ArrivalTime)";
+
+                using (SqlCommand cmd = new SqlCommand(sqlQuery, con))
+                {
+                    cmd.Parameters.AddWithValue("@RouteNumber", flightSchedule.RouteNumber);
+                    cmd.Parameters.AddWithValue("@FlightName", flightSchedule.FlightName);
+                    cmd.Parameters.AddWithValue("@DepartureAirport", flightSchedule.DepartureAirport);
+                    cmd.Parameters.AddWithValue("@DestinationAirport", flightSchedule.DestinationAirport);
+                    cmd.Parameters.AddWithValue("@EconomySeats", flightSchedule.EconomySeats);
+                    cmd.Parameters.AddWithValue("@EconomyPrice", flightSchedule.EconomyPrice);
+                    cmd.Parameters.AddWithValue("@BusinessSeats", flightSchedule.BusinessSeats);
+                    cmd.Parameters.AddWithValue("@BusinessPrice", flightSchedule.BusinessPrice);
+                    cmd.Parameters.AddWithValue("@DepartureTime", flightSchedule.DepartureTime);
+                    cmd.Parameters.AddWithValue("@ArrivalTime", flightSchedule.ArrivalTime);
+
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
 
         private void LoadFlightSchedules()
         {
-            fSchedule.Clear();
+            fSchedules.Clear();
 
             try
             {
@@ -64,7 +100,7 @@ namespace FlightBookingFinal.Pages.FlightSchedules
                         {
                             while (reader.Read())
                             {
-                                fSchedule.Add(new FlightSchedule
+                                fSchedules.Add(new FlightSchedule
                                 {
                                     RouteNumber = reader.GetString(0),
                                     FlightName = reader.GetString(1),
@@ -84,7 +120,7 @@ namespace FlightBookingFinal.Pages.FlightSchedules
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Exception1:" + ex.Message);
+                Console.WriteLine($"Exception: {ex.Message}");
             }
         }
 
@@ -113,8 +149,38 @@ namespace FlightBookingFinal.Pages.FlightSchedules
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Exception2:" + ex.Message);
+                Console.WriteLine($"Exception: {ex.Message}");
             }
+        }
+
+        private void LoadAirports()
+        {
+            listairports.Clear();
+
+            try
+            {
+                string connectionString = "Data Source=DESKTOP-ST9MH65;Initial Catalog=FBookingDBV2;Integrated Security=True;Encrypt=False";
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    con.Open();
+                    string sqlQuery = "SELECT Name FROM Airports";
+                    using (SqlCommand cmd = new SqlCommand(sqlQuery, con))
+                    {
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                listairports.Add(reader.GetString(0));
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception: {ex.Message}");
+            }
+
         }
     }
 }

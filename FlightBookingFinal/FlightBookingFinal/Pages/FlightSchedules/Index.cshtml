@@ -2,3 +2,45 @@
 @model FlightBookingFinal.Pages.FlightSchedules.IndexModel
 @{
 }
+<h2>Flight Schedules</h2>
+
+@if (Model.FlightSchedules != null && Model.FlightSchedules.Any())
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Route Number</th>
+                <th>Flight Name</th>
+                <th>Departure Airport</th>
+                <th>Destination Airport</th>
+                <th>Economy Seats</th>
+                <th>Economy Price</th>
+                <th>Business Seats</th>
+                <th>Business Price</th>
+                <th>Departure Time</th>
+                <th>Arrival Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var schedule in Model.FlightSchedules)
+            {
+                <tr>
+                    <td>@schedule.RouteNumber</td>
+                    <td>@schedule.FlightName</td>
+                    <td>@schedule.DepartureAirport</td>
+                    <td>@schedule.DestinationAirport</td>
+                    <td>@schedule.EconomySeats</td>
+                    <td>@schedule.EconomyPrice</td>
+                    <td>@schedule.BusinessSeats</td>
+                    <td>@schedule.BusinessPrice</td>
+                    <td>@schedule.DepartureTime</td>
+                    <td>@schedule.ArrivalTime</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No flight schedules available.</p>
+}

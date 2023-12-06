@@ -1,0 +1,48 @@
+﻿@page
+@model FlightBookingFinal.Pages.CustomerBooking.BookingModel
+@{
+    ViewData["Title"] = "Book Flight";
+}
+
+<div class="container mt-5">
+    <h2>Book Your Flight</h2>
+
+    <form method="post">
+        <div class="mb-3">
+            <label for="FlightRouteNumber" class="form-label">Flight Route Number</label>
+            <select class="form-select" asp-for="BInfo.FlightRouteNumber" required>
+                @foreach (var flightRouteNumber in Model.FlightRouteNumbers)
+                {
+                    <option value="@flightRouteNumber">@flightRouteNumber</option>
+                }
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="Class" class="form-label">Class</label>
+            <select class="form-select" asp-for="BInfo.Class" required>
+                <option value="Economy">Economy</option>
+                <option value="Business">Business</option>
+                <!-- Add more class options as needed -->
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="NumTickets" class="form-label">Number of Tickets</label>
+            <input type="number" class="form-control" asp-for="BInfo.NumTickets" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-check-label" for="RoundTrip">
+                <input class="form-check-input" type="checkbox" asp-for="BInfo.RoundTrip"> Round Trip
+            </label>
+        </div>
+
+        <div class="mb-3">
+            <label for="TotalPrice" class="form-label">Total Price</label>
+            <input type="text" class="form-control" asp-for="BInfo.TotalPrice" readonly>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Book Now</button>
+    </form>
+</div>

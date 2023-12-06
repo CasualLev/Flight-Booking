@@ -46,6 +46,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQm9va2luZ1VzZXJzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/levyi/OneDrive/Desktop/Dotnet class/Final Project/FlightBookingFinal/FlightBookingFinal/Pages/CustomerBooking/Booking.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJCb29raW5nXEJvb2tpbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/levyi/OneDrive/Desktop/Dotnet class/Final Project/FlightBookingFinal/FlightBookingFinal/Pages/CustomerBooking/Search.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJCb29raW5nXFNlYXJjaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/levyi/OneDrive/Desktop/Dotnet class/Final Project/FlightBookingFinal/FlightBookingFinal/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -60,6 +68,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/levyi/OneDrive/Desktop/Dotnet class/Final Project/FlightBookingFinal/FlightBookingFinal/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/levyi/OneDrive/Desktop/Dotnet class/Final Project/FlightBookingFinal/FlightBookingFinal/Pages/Landing/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGFuZGluZ1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/levyi/OneDrive/Desktop/Dotnet class/Final Project/FlightBookingFinal/FlightBookingFinal/Pages/Login/Login.cshtml]

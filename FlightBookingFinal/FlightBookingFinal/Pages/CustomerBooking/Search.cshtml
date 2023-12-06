@@ -1,0 +1,74 @@
+﻿@page
+@model FlightBookingFinal.Pages.CustomerBooking.SearchModel
+@{
+}
+
+<h2>Search for Available Flights</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label for="DepartureAirport">Departure Airport:</label>
+        <select asp-for="DepartureAirport" class="form-control" id="DepartureAirport">
+            <option value="">Select Departure Airport</option>
+            @foreach (var airport in Model.DepartureAirports)
+            {
+                <option value="@airport">@airport</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="DestinationAirport">Destination Airport:</label>
+        <select asp-for="DestinationAirport" class="form-control" id="DestinationAirport">
+            <option value="">Select Destination Airport</option>
+            @foreach (var airport in Model.DestinationAirports)
+            {
+                <option value="@airport">@airport</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="DepartureDate">Departure Date:</label>
+        <input asp-for="DepartureDate" type="date" class="form-control" id="DepartureDate" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Search Flights</button>
+</form>
+
+@if (Model.Flights != null && Model.Flights.Any())
+{
+    <h3>Available Flights</h3>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Flight Name</th>
+                <th>Departure Airport</th>
+                <th>Destination Airport</th>
+                <th>Departure Time</th>
+                <th>Arrival Time</th>
+                <th>Action</th>
+                <!-- Add more columns as needed -->
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var flight in Model.Flights)
+            {
+                <tr>
+                    <td>@flight.FlightName</td>
+                    <td>@flight.DepartureAirport</td>
+                    <td>@flight.DestinationAirport</td>
+                    <td>@flight.DepartureTime</td>
+                    <td>@flight.ArrivalTime</td>
+                    <td>
+                        <a href="/CustomerBooking/Booking?flightId=@flight.FlightName" class="btn btn-success">Book Now</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No available flights found.</p>
+}
